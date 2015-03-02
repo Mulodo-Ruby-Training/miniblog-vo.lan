@@ -1,4 +1,5 @@
-*h1. Hệ thống "Mini Blog"
+Hệ thống "Mini Blog"
+============================
 
 *Yêu cầu*
 Suy nghĩ, thiết kế một hệ thống giống như mini blog, cho phép user login, post bài viết, tìm kiếm bài viết cũng như comment trên các bài viết.
