@@ -54,6 +54,6 @@ Template Daily Report
    ◎ (None)
 ③ Notice
    ◎ (None)
-④Plan
+④ Plan
    Net working day: Task #21840 : Coding: create user account
 ```
