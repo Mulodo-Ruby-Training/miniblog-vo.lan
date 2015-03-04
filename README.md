@@ -40,3 +40,20 @@ API để thực hiện các chức năng của Front-End.
 - Thiết kế API Spec, API Detail Design (Flow)
 - Vẽ Sequence Diagram, Class Diagram
 - etc..
+
+
+Template Daily Report
+===============
+```
+① Today's task 
+   ◎ Task #21840: Coding : create user account
+       ■ Done     : 80%
+       ■ Status   : In Progress
+       ■ Reference: https://my.redmine.jp/mulodo/issues/21840
+② Problem
+   ◎ (None)
+③ Notice
+   ◎ (None)
+④Plan
+   Net working day: Task #21840 : Coding: create user account
+```
