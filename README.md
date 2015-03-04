@@ -45,6 +45,8 @@ API để thực hiện các chức năng của Front-End.
 Template Daily Report
 ===============
 ```
+Subject: [Ruby-Training] Report [FULL NAME] [yyyy-mm-dd]
+
 ① Today's task 
    ◎ Task #21840: Coding : create user account
        ■ Done     : 80%
