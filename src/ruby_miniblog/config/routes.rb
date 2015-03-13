@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
 get "log_out" => "logins#destroy", :as => "log_out"
 get "log_in" => "logins#new", :as => "log_in"
 get "sign_up" => "users#new", :as => "sign_up"
@@ -7,6 +8,8 @@ resources :users
 resources :logins
 resources :posts
 get 'homes/' =>'homes#index'
+get 'posts/:id' => 'post#show'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

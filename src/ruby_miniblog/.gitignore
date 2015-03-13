@@ -9,5 +9,6 @@
 /public/system/posts/images/000/*
 # Ignore all logfiles and tempfiles.
 /log/*
+/public/system/posts/images/ooo/*
 !/log/.keep
 /tmp

@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
+    @users = User.all
   end
 
   # GET /posts/1
