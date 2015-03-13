@@ -1,0 +1,27 @@
+<%- model_class = Post -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+ <% @posts.each do |post| %>
+ <div class="media">
+  <a class="pull-left projectImg" href="#">
+  <%= image_tag post.image.url(:medium) %>
+  </a>
+  <div class="media-body">
+  <p hidden>><%= post.id%></p>
+  <h4 class="media-heading"><a href="#"><%= post.title %></a></h4>
+  <p>
+     <%= post.description%>
+  </p>
+  <div class="pull-right"><%= link_to 'Read more', post %></div>
+  </div>
+  <div>
+  <%= link_to 'Edit', edit_post_path(post),:class => 'btn btn-default btn-xs' %>
+  <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" },:class => 'btn btn-xs btn-danger' %>
+  </div>
+  </div>
+  <hr>
+  <% end %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_post_path,
+            :class => 'btn btn-primary' %>
