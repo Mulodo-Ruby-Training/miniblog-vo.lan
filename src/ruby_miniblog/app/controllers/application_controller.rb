@@ -3,15 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   layout "application_v1"
-  before_action :posts_list
   helper_method :current_user
-
-    def posts_list
-    	@posts = Post.all
-    end
+  before_action :all_post
 private
-
 	def current_user
 	  @current_user ||= User.find(session[:user_id]) if session[:user_id]
 	end
+  def all_post
+    @posts = Post.all
+  end
 end

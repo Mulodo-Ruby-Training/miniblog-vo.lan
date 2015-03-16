@@ -10,6 +10,14 @@ GIT
       railties (>= 3.1)
 
 GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: e41ba7f805d1eca19153ff91b27423a4aff5e4b6
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (4.3.5)
+
+GIT
   remote: https://github.com/galetahub/ckeditor.git
   revision: 0efddf9a46bbba4aeda562ec0ea77af738404418
   specs:
@@ -208,6 +216,7 @@ DEPENDENCIES
   byebug
   ckeditor!
   coffee-rails (~> 4.1.0)
+  datetimepicker-rails!
   imagemagick-binaries
   jbuilder (~> 2.0)
   jquery-rails

@@ -7,6 +7,7 @@
 # Ignore bundler config.
 /.bundle
 /public/system/posts/images/000/*
+/public/system/users/avatars/000/*
 # Ignore all logfiles and tempfiles.
 /log/*
 /public/system/posts/images/ooo/*

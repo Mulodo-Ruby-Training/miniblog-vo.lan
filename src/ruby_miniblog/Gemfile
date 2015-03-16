@@ -47,6 +47,8 @@ end
 gem "therubyracer"
 gem "less-rails" 
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+# datetimepicker
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 # gem ma hoa pass
 gem "bcrypt-ruby", :require => "bcrypt"
 # upload hinh
