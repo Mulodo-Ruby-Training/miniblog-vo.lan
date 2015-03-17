@@ -44,10 +44,6 @@ group :development, :test do
   gem 'spring'
 end
 
-# install bootstrap
-gem "therubyracer" 
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-
 # datetimepicker
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 

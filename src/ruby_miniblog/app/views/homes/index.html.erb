@@ -5,7 +5,7 @@
 <% @posts.each do |post| %>
 <div class="media">
   <a class="pull-left projectImg" href="#">
-    <%= image_tag post.image.url(:medium) %>
+    <%= image_tag post.image.url(:thumb), :class =>'img-thumbnail' %>
   </a>
   <div class="media-body">
     <p hidden>><%= post.id%></p>
