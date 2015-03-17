@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  get "sign_up"=>"users#new", :as => "sign_up"
-  get "log_out" => "logins#destroy", :as => "log_out"
-  get "log_in" => "logins#new", :as => "log_in"
+  
   root :to => "users#new"
+
   resources :users
   resources :logins
   resources :posts
+
+  get "sign_up"=>"users#new", :as => "sign_up"
+  get "log_out" => "logins#destroy", :as => "log_out"
+  get "log_in" => "logins#new", :as => "log_in"
   get 'homes/' =>'homes#index'
   get 'posts/:id' => 'post#show'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -10,16 +10,22 @@
   <div class="media-body">
     <p hidden>><%= post.id%></p>
     <h4 class="media-heading"><a href="#"><%= post.title %></a></h4>
+    <h6 class="media-heading"><%= post.created_at %></h6>
     <p>
      <%= post.description%>
    </p>
    <div class="pull-right"><%= link_to 'Read more', post %></div>
  </div>
  <div>
-  <%= link_to 'Edit', edit_post_path(post),:class => 'btn btn-default btn-xs' %>
-  <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" },:class => 'btn btn-xs btn-danger' %>
-</div>
+   <% if current_user.nil? %>
+   <div>
+   </div>
+   <%elsif current_user.id == post.user_id %>
+     <%= link_to 'Edit', edit_post_path(post),:class => 'btn btn-default btn-xs' %>
+   <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" },:class => 'btn btn-xs btn-danger' %>
+   <% end %>
+ </div>
 </div>
 <hr>
 <% end %>
-<%= link_to t('.new', :default => t("helpers.links.new")),new_post_path,:class => 'btn btn-primary' %>
+<%= will_paginate @posts %>

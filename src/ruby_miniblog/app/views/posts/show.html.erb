@@ -9,6 +9,7 @@
   <div class="media-body">
   <p hidden>><%= @post.id%></p>
   <h4 class="media-heading"><a href="#"><%= @post.title %></a></h4>
+  <h6 class="media-heading"><%= post.created_at %></h6>
   <p>
      <%= @post.description%>
   </br>
@@ -16,8 +17,12 @@
   <%= raw(@post.content)%>
   </div>
   <div>
+  <% if current_user.nil? %>
+   <%= link_to "Back", homes_path,:class => 'btn btn-xs btn-danger' %>
+  <%else%>
   <%= link_to 'Edit', edit_post_path(@post),:class => 'btn btn-default btn-xs' %>
   <%= link_to "Back", posts_path,:class => 'btn btn-xs btn-danger' %>
+  <%end%>
   </div>
   </div>
   <hr>

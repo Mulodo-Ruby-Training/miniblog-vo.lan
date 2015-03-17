@@ -1,7 +1,7 @@
 
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<h1>Sign Up</h1>
+		<h1 class = "text-center">Register User</h1>
 		<%= form_for @user do |f| %>
 		<% if @user.errors.any? %>
 		<div class="error_messages">
@@ -41,7 +41,11 @@
 				</tr>
 				<tr>
 					<td><%= f.label :gender %></td>
-					<td><%= f.select :gender, [['Male', '0'], ['Female', '1'], ['Other','2']] %></td>
+					<td><%= f.select(:gender,options_for_select(genders, :selected => f.object.status))%></td>
+				</tr>
+				<tr>
+					<td><%= f.label :status %></td>
+					<td><%= f.select(:status,options_for_select(active_status, :selected => f.object.status))%></td>
 				</tr>
 				<tr>
 					<td><%= f.label :avatar %></td>
@@ -57,7 +61,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<p class="button"><%= f.submit class: "btn btn-primary" %></p>
+		<p class="button text-center"><%= f.submit class: "btn btn-primary" %></p>
 		<% end %>
 	</div>
 </div>
