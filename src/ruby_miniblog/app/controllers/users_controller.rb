@@ -7,7 +7,7 @@ def new
 end
 
 def create
-byebug
+#byebug
   @user = User.new(user_params)
   if @user.save
     redirect_to log_in_path, :notice => "Signed up!"
