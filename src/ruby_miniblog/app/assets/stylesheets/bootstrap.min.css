@@ -1256,7 +1256,10 @@ h6,.h6{
 }
 
 p{
-	margin:0 0 10px
+	/*margin:0 0 10px*/
+}
+.pull-left {
+    float: left !important;
 }
 
 .lead{
@@ -1853,7 +1856,7 @@ pre code{
 	}
 
 	.col-sm-10{
-		width:81.33333333%
+		width: 83.333%
 	}
 
 	.col-sm-9{
@@ -1873,7 +1876,8 @@ pre code{
 	}
 
 	.col-sm-5{
-		width:41.66666667%
+		width: 47.667%;
+		height:150px
 	}
 
 	.col-sm-4{
@@ -4555,12 +4559,12 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 }
 
 .navbar-inverse{
-	background-color:#222;
-	border-color:#080808
+	background-color:#428BCA;
+	border-color: transparent;
 }
 
 .navbar-inverse .navbar-brand{
-	color:#777
+	color:white
 }
 
 .navbar-inverse .navbar-brand:hover,.navbar-inverse .navbar-brand:focus{
@@ -4573,7 +4577,8 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 }
 
 .navbar-inverse .navbar-nav>li>a{
-	color:#777
+	color:white;
+	font-style: bold
 }
 
 .navbar-inverse .navbar-nav>li>a:hover,.navbar-inverse .navbar-nav>li>a:focus{
@@ -5217,9 +5222,9 @@ a.thumbnail:hover,a.thumbnail:focus,a.thumbnail.active{
 	background-image:linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)
 }
 
-.media,.media-body{
-	overflow:hidden;
-	zoom:1
+.media-body{
+  overflow:hidden;
+  text-overflow: ellipsis
 }
 
 .media,.media .media{
@@ -5227,7 +5232,7 @@ a.thumbnail:hover,a.thumbnail:focus,a.thumbnail.active{
 }
 
 .media:first-child{
-	margin-top:0
+	/*margin-top:0 */
 }
 
 .media-object{
@@ -5253,7 +5258,8 @@ a.thumbnail:hover,a.thumbnail:focus,a.thumbnail.active{
 
 .list-group{
 	padding-left:0;
-	margin-bottom:20px
+	margin-bottom:20px;
+
 }
 
 .list-group-item{
@@ -5446,7 +5452,7 @@ a.list-group-item-danger.active,a.list-group-item-danger.active:hover,a.list-gro
 }
 
 .panel-heading{
-	padding:10px 15px;
+	padding: 16px 4px 49px;
 	border-bottom:1px solid transparent;
 	border-top-left-radius:3px;
 	border-top-right-radius:3px
@@ -6734,4 +6740,17 @@ button.close{
 		display:none!important
 	}
 
+}
+@media (min-width: 768px) {
+    .textareawidth {
+        width:600px;
+    }
+}
+@media (max-width: 767px) {
+    .textareawidth {
+
+    }
+}
+.btn-al{
+	margin-left: 236px
 }

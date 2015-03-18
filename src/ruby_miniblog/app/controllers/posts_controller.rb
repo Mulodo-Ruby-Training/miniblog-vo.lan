@@ -7,8 +7,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.paginate(:page => params[:page], :per_page => 3)
-    @users = User.all
+    @posts = Post.all.paginate(:page => params[:page], :per_page => 4)
+    @users = User.all.where(:id =>current_user.id)
   end
 
   # GET /posts/1
@@ -28,6 +28,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    #byebug
     @post = Post.new(post_params)
 
     respond_to do |format|

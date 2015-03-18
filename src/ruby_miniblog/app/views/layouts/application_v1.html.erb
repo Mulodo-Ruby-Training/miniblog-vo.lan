@@ -29,21 +29,22 @@
              <i class="glyphicon glyphicon-user"></i>
              Hi <%= current_user.display_name %>
              <span class="caret"></span></a>
-             <% else %>
-             <%= link_to "Sign up", sign_up_path %>
-             <span class="caret"></span></a>
-             <% end %>  
              <ul id="g-account-menu" class="dropdown-menu" role="menu">
-              <li><a href="#">My Profile</a></li>
+              <li><%= link_to 'All post', posts_path%></li>
+              <li><%= link_to "New post",new_post_path%></li>
+              <li><%= link_to 'Edit Profile', edit_user_path(current_user.id)%></li>
+              <li><a href="#">Change password</a></li>
             </ul>
-          </li>s
+            <% else %>
+            <%= link_to "Sign up", sign_up_path %>
+            <span class="caret"></span></a>
+            <% end %>  
+          </li>
           <li>
            <% if current_user %>
            <%= link_to "Logout", log_out_path %>
-           <i class="glyphicon glyphicon-lock"></i>
            <% else %>
            <%= link_to "log in", log_in_path %>
-           <i class="glyphicon glyphicon-lock"></i>
            <% end %>
          </li>
        </ul>
@@ -54,22 +55,30 @@
  <!-- Main -->
  <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-2"> 
-      <% if current_user.nil?%>
-      <%= render "layouts/left_menu_home"%>
-      <% else %>
-      <%= render "layouts/left_menu" %>
-      <% end %>
+    <div class="col-sm-1"> 
+      <!--% if current_user.nil?%-->
+      <!--%= render "layouts/left_menu_home"%-->
+      <!--% else %-->
+      <!--%= render "layouts/left_menu" %-->
+      <!--% end %-->
     </div>
     <div class="col-sm-10">  
       <div class="row">
         <div class="panel panel-default">
-          <div class="panel-heading"><h4>My miniblog training</h4></div>
-          <div class="panel-body">
-            <div class="list-group">
-              <%= yield %>
-            </div>
+          <div class="panel-heading">
+            <form action="#" role="search">
+              <div class="col-lg-6">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for user name...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button">Search</button>
+                  </span>
+                  <div></div>
+                </div><!-- /input-group -->
+              </div>
+            </form> 
           </div>
+          <%= yield %>
         </div>
       </div>
     </div>
@@ -77,7 +86,7 @@
 </div>
 </div>
 <!-- /Main -->
-<footer class="text-center">My teamplate</a>
+<footer class="text-center ft_text">Teamplate ruby training
 </footer>
 </div>
 </body>

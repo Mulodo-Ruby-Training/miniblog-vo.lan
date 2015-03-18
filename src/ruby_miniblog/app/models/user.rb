@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+belongs_to :post
+
 before_save :hash_new_password, :if=>:password_changed?
 
 # check validate all column     
@@ -9,7 +11,7 @@ validates :first_name, length: { maximum: 50 }
 validates :last_name, length: { maximum: 50 }
 validates :display_name, length: { maximum: 50 }
 validates :birthday, length: { maximum: 20 }
-validates :password, length: { in: 6..20 }
+validates :password, length: { in: 6..20 }, :on => :create
 validates_uniqueness_of :username, :email
 validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 # add avarta

@@ -14,7 +14,11 @@ footer {
   margin-top:20px;
   padding-top:20px;
   padding-bottom:20px;
-  background-color:#efefef;
+  background-color:#428ECF;
+}
+.ft_text{
+  color: white;
+  font-size: 14px;
 }
 
 /* count indicator near icons */

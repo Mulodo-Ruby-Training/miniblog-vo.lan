@@ -16,6 +16,6 @@ private
 	end
   
   def all_post
-    @posts = Post.all.paginate(:page => params[:page], :per_page => 3)
+    @posts = Post.all.paginate(:page => params[:page], :per_page => 4)
   end
 end

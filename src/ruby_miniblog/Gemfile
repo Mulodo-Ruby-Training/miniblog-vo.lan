@@ -51,7 +51,7 @@ gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: '
 gem "bcrypt-ruby", :require => "bcrypt"
 
 # upload hinh
-gem 'imagemagick-binaries'
+#gem 'imagemagick-binaries'
 gem "paperclip", "~> 4.2"
 
 # edit content post by ckeditor
