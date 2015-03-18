@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Mini blog</title>
+  <meta name="generator" content="Bootply" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</head>
+<body>
+  <!-- Header -->
+  <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/homes">Home</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">  
+          <li class="dropdown">
+           <% if current_user %>
+           <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+             <i class="glyphicon glyphicon-user"></i>
+             Hi <%= current_user.display_name %>
+             <span class="caret"></span></a>
+             <ul id="g-account-menu" class="dropdown-menu" role="menu">
+              <li><%= link_to 'All post', posts_path%></li>
+              <li><%= link_to "New post",new_post_path%></li>
+              <li><%= link_to 'Edit Profile', edit_user_path(current_user.id)%></li>
+              <li><a href="#">Change password</a></li>
+            </ul>
+            <% else %>
+            <%= link_to "Sign up", sign_up_path %>
+            <span class="caret"></span></a>
+            <% end %>  
+          </li>
+          <li>
+           <% if current_user %>
+           <%= link_to "Logout", log_out_path %>
+           <% else %>
+           <%= link_to "log in", log_in_path %>
+           <% end %>
+         </li>
+       </ul>
+     </div>
+   </div>
+ </div>
+ <!-- /Header -->
+ <!-- Main -->
+ <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-1"> 
+      <!--% if current_user.nil?%-->
+      <!--%= render "layouts/left_menu_home"%-->
+      <!--% else %-->
+      <!--%= render "layouts/left_menu" %-->
+      <!--% end %-->
+    </div>
+    <div class="col-sm-10">  
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <form action="#" role="search">
+              <div class="col-lg-6">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for user name...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button">Search</button>
+                  </span>
+                  <div></div>
+                </div><!-- /input-group -->
+              </div>
+            </form> 
+          </div>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- /Main -->
+<footer class="text-center ft_text">Teamplate ruby training
+</footer>
+</div>
+</body>
+</html>

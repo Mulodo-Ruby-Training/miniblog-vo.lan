@@ -1,0 +1,60 @@
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h1 class = "text-center">Edit user</h1>
+		<%= form_for @user do |f| %>
+		<% if @user.errors.any? %>
+		<div class="error_messages">
+			<h2>Form is invalid</h2>
+			<ul>
+				<% for message in @user.errors.full_messages %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
+					<td><%= f.label :username %></td>
+					<td><%= f.text_field :username, class: 'form-control'%></td>
+				</tr>
+				<tr>
+					<td><%= f.label :first_name %></td>
+					<td><%= f.text_field :first_name, class: 'form-control'%></td>
+				</tr>
+				<tr>
+					<td><%= f.label :last_name %></td>
+					<td><%= f.text_field :last_name, class: 'form-control'%></td>
+				</tr>
+				<tr>
+					<td><%= f.label :display_name %></td>
+					<td><%= f.text_field :display_name, class: 'form-control'%></td>
+				</tr>
+				<tr>
+					<td><%= f.label :birthday %></td>
+					<td><%= f.text_field :birthday, as: :datetime_picker, wrapper: :ranged_datetime %>(dd/mm/yyyy)</td>
+				</tr>
+				<tr>
+					<td><%= f.label :email %></td>
+					<td><%= f.text_field :email, class: 'form-control'%></td>
+				</tr>
+				<tr>
+					<td><%= f.label :gender %></td>
+					<td><%= f.select(:gender,options_for_select(genders, :selected => f.object.status))%></td>
+				</tr>
+				<tr>
+					<td><%= f.label :status %></td>
+					<td><%= f.select(:status,options_for_select(active_status, :selected => f.object.status))%></td>
+				</tr>
+				<tr>
+					<td><%= f.label :avatar %></td>
+					<td><%= f.file_field :avatar %></td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="button text-center"><%= f.submit class: "btn btn-primary" %></p>
+		<% end %>
+	</div>
+</div>
+
