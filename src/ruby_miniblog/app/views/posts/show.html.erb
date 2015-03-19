@@ -1,6 +1,3 @@
-<script>
- CKEDITOR.replace('content');
-</script>
 <%- model_class = Post -%>
 <div class="row">
   <div class="col-sm-12">
@@ -11,37 +8,69 @@
         <h6 class="media-heading"><%= @post.created_at %></h6>
         <p class="text-justify"><%= @post.description%></p>
         <p class="text-justify"><%= raw(@post.content)%></p>
-        <div class="field">
-          <i class="icon-comment"></i>
-          <div style="color:red">Add comment</div>
-          <textarea class="textareawidth" id ="content" rows="3" name="comment"></textarea></br>
-          <div class="btn-al"><button type="submit" class="btn btn-primary">Submit</button>
+        <div id="allHolder">
+          <div id ="commentsHolder">
+            <textarea id ="commentBodyField" rows="3" name="comment" placeholder="Enter your comment..."></textarea>
+          </div>
+          <div class="postCommentButtonHolder">
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
-        <ul class="media-list">
-          <li class="media">
-            <div class="media-left">
-              <a href="#">
-                <img class="media-object" src="...">
-              </a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
-              <p>
-               Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-             </p>
-           </div>
-         </li>
-       </ul>
-       <p>
-        <% if current_user.nil? %>
-        <%= link_to "Back", homes_path,:class => 'btn btn-xs btn-danger' %>
-        <%else%>
-        <%= link_to 'Edit', edit_post_path(@post),:class => 'btn btn-default btn-xs' %>
-        <%= link_to "Back", posts_path,:class => 'btn btn-xs btn-danger' %>
-        <%end%>
-      </p>
+        <div class="detailBox">
+          <div class="titleBox">
+            <label>All Comment</label>
+          </div>
+          <div class="commentBox">
+          </div>
+          <div class="actionBox">
+            <ul class="commentList">
+              <li>
+                <div class="commenterImage">
+                  <img src="http://lorempixel.com/50/50/people/6" />
+                </div>
+                <div class="commentText">
+                <cite class="user">user demo
+                <span class="date sub-text">on March 5th, 2015</span>
+                 </cite>
+                  <p class="">Hello this is a test comment.</p> 
+                  <span class="date sub-text"><a href="#">Reply</a></span>
+                </div>
+              </li>
+              <li>
+                <div class="commenterImage">
+                  <img src="http://lorempixel.com/50/50/people/7" />
+                </div>
+                <div class="commentText">
+                <cite class="user">user admin
+                <span class="date sub-text">on March 5th, 2015</span>
+                 </cite>
+                  <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text"><a href="#">Reply</a></span>
+
+                </div>
+              </li>
+              <li>
+                <div class="commenterImage">
+                  <img src="http://lorempixel.com/50/50/people/9" />
+                </div>
+                <div class="commentText">
+                <cite class="user">user test
+                <span class="date sub-text">on March 5th, 2015</span>
+                 </cite>
+                  <p class="">Hello this is a test comment.</p> <span class="date sub-text"><a href="#">Reply</a></span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          <% if current_user.nil? %>
+          <%= link_to "Back", homes_path,:class => 'btn btn-xs btn-danger' %>
+          <%else%>
+          <%= link_to 'Edit', edit_post_path(@post),:class => 'btn btn-default btn-xs' %>
+          <%= link_to "Back", posts_path,:class => 'btn btn-xs btn-danger' %>
+          <%end%>
+        </p>
+      </div>
     </div>
   </div>
-</div>
 </div>

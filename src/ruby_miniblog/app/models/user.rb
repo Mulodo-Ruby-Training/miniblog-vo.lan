@@ -14,7 +14,7 @@ validates :birthday, length: { maximum: 20 }
 validates :password, length: { in: 6..20 }, :on => :create
 validates_uniqueness_of :username, :email
 validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
-# add avarta
+# add avatar
 
 has_attached_file :avatar, :styles => { :medium => "60x60>", :thumb => "30x30>" }, :default_url => "/system/users/avatars/default/:style/missing.jpg"
 validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
@@ -24,7 +24,7 @@ def password_changed?
 	!password.blank?
 end
 
-private
+protected
 # create hash password sign up
 def hash_new_password
 	self.password_salt = BCrypt::Engine.generate_salt
@@ -41,6 +41,20 @@ def self.authenticate(username, password)
 	end
 	return nil
 end
+
+def self.change_password(user_id,password)
+	byebug
+	if password!= nil && user = find_by(id: user_id)
+		if user
+			password_salt = BCrypt::Engine.generate_salt
+			password = BCrypt::Engine.hash_secret(password, password_salt)
+		    user.update(:password_salt => password_salt,:password => password)
+			return user
+		end
+	end
+	return nil
+end
+
 end
 
 

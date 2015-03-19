@@ -26,14 +26,16 @@
           <li class="dropdown">
            <% if current_user %>
            <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-             <i class="glyphicon glyphicon-user"></i>
+             <i class="commenterAvatar">
+               <%= image_tag current_user.avatar.url(:thumb),:class =>'img-thumbnail'%>
+             </i>
              Hi <%= current_user.display_name %>
              <span class="caret"></span></a>
              <ul id="g-account-menu" class="dropdown-menu" role="menu">
               <li><%= link_to 'All post', posts_path%></li>
-              <li><%= link_to "New post",new_post_path%></li>
+              <li><%= link_to 'New post',new_post_path%></li>
               <li><%= link_to 'Edit Profile', edit_user_path(current_user.id)%></li>
-              <li><a href="#">Change password</a></li>
+              <li><%= link_to 'Change password',change_password_path%></li>
             </ul>
             <% else %>
             <%= link_to "Sign up", sign_up_path %>
