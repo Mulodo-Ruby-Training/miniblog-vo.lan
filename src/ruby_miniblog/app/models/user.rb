@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
 
 belongs_to :post
 
-before_save :hash_new_password, :if=>:password_changed?
-
+before_save :hash_new_password, :downcase_email, only: [:create,:update]
+#before_update :hash_new_password 
 # check validate all column     
 validates_confirmation_of :password, :if=>:password_changed?
 validates :username, length: { maximum: 40 }
@@ -24,11 +24,20 @@ def password_changed?
 	!password.blank?
 end
 
-protected
+def password_flag?
+	params[:user][:flag].present?
+end
+
+def downcase_email
+      self.email = email.downcase
+end
+
 # create hash password sign up
 def hash_new_password
+	byebug
 	self.password_salt = BCrypt::Engine.generate_salt
 	self.password = BCrypt::Engine.hash_secret(password, password_salt)
+  
 end 
 
 # authenticate password sign in
@@ -41,20 +50,6 @@ def self.authenticate(username, password)
 	end
 	return nil
 end
-
-def self.change_password(user_id,password)
-	byebug
-	if password!= nil && user = find_by(id: user_id)
-		if user
-			password_salt = BCrypt::Engine.generate_salt
-			password = BCrypt::Engine.hash_secret(password, password_salt)
-		    user.update(:password_salt => password_salt,:password => password)
-			return user
-		end
-	end
-	return nil
-end
-
 end
 
 

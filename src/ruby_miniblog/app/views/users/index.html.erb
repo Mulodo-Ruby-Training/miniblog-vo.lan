@@ -1,0 +1,22 @@
+<div class="panel-body">
+  <div class="list-group">
+    <% @users.each do |user| %>
+    <div class="media col-sm-5">
+      <a class="pull-left projectImg" href="#">
+        <%= image_tag user.avatar.url(:thumb),:class =>'img-thumbnail' %>
+      </a>
+      <div class="media-body">
+        <p hidden><%= user.id%></p>
+        <h4 class="media-heading"><%= link_to user.username, user %></a></h4>
+        <h6 class="media-heading"><%= user.created_at %></h6>
+        <p class="text-justify">
+         <%= user.display_name%>
+       </p>
+     </div>
+     <div>
+     <% end %>
+   </div>
+</div>
+
+
+ 

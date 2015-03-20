@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "change_password" => "users#change_password",:as =>"change_password"
   get 'homes/' =>'homes#index'
   get 'posts/:id' => 'post#show'
+  get '/users/:id' => 'users#update'
 
 
 

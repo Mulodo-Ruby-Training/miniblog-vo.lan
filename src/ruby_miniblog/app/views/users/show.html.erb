@@ -1,0 +1,43 @@
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h1 class = "text-center"></h1>
+		<%= form_for @user do |f| %>
+		<% if flash[:change] %>
+		<div class="alert alert-success" role="alert">
+			<button type="button" class="close" data-dismiss="alert">
+				<span aria-hidden="true">&times;</span>
+				<span class="sr-only">Close</span>
+			</button>
+			<%= flash[:change] %>
+		</div>
+		<% end %>
+		<% if flash[:unchange] %>
+		<div class="alert alert-danger" role="alert">
+			<button type="button" class="close" data-dismiss="alert">
+				<span aria-hidden="true">&times;</span>
+				<span class="sr-only">Close</span>
+			</button>	 
+			<%= flash[:unchange] %>  		
+		</div>
+		<% end %>
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
+					<td><%= f.label :password_old %></td>
+					<td><%= f.password_field :password_old, :class => 'form-control', :required =>""%></td>
+				</tr>
+				<tr>
+					<td><%= f.label :password %></td>
+					<td><%= f.password_field :password, :class => 'form-control',:required =>"" %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :password_confirmation %></td>
+					<td><%= f.password_field :password_confirmation, :class => 'form-control', :required =>"" %></td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="button text-center"><%= f.submit 'Save', class: "btn btn-primary" %></p>
+		<% end %>
+	</div>
+</div>
