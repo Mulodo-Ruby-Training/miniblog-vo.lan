@@ -1,12 +1,21 @@
+<% if !params[:user_post].blank?%>
 <ol class="breadcrumb">
 <li>
 <%- model_class = Post -%>
-<% if !params[:user_post].blank?%>
 About <%= flash[:count] %> result of 
 <a href="#"><%= flash[:name].username %></a> post
-<%end%>
 </li>
 </ol>
+<%end%>
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+      <%= flash[:notice] %>
+    </div>
+<%end%>
 <div class="panel-body">
   <div class="list-group">
     <% @posts.each do |post| %>
