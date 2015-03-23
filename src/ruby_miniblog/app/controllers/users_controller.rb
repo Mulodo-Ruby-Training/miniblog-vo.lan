@@ -32,14 +32,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    byebug
     if params[:flag].present? 
       user = User.authenticate(current_user.username, params[:user][:password])
       if user
         @user.update(user_edit_params)
-        redirect_to homes_path, notice: 'User was successfully updated.'
+        redirect_to homes_path, user_update: 'User was successfully updated.'
       else
-        flash[:user_update] = "Password current not validate, please entry password"
+        flash[:user_update_f] = "Password current not validate, please entry password"
         render "edit"
       end
     else

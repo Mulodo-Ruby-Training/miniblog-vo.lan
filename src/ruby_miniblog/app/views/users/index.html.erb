@@ -8,8 +8,8 @@
     </a>
   </div>
   <div class="col-md-7">
-    <div class="title"><%= user.username%></div>
-    <div class="date"> Date join: <%= user.created_at%></div>
+    <div class="title"><a href="#"><%= user.username%></a></div>
+    <div class="date"> Date join: <%= date_format(user.created_at)%></div>
     <div>Firstname: <%= user.first_name %></div>
     <div>Lastname: <%= user.last_name %></div>
     <div class="title">

@@ -15,6 +15,24 @@
 			</ul>
 		</div>
 		<% end %>
+		<% if flash[:user_update] %>
+		<div class="alert alert-success" role="alert">
+			<button type="button" class="close" data-dismiss="alert">
+				<span aria-hidden="true">&times;</span>
+				<span class="sr-only">Close</span>
+			</button>
+			<%= flash[:user_update] %>
+		</div>
+		<% end %>
+		<% if flash[:user_update_f] %>
+		<div class="alert alert-danger" role="alert">
+			<button type="button" class="close" data-dismiss="alert">
+				<span aria-hidden="true">&times;</span>
+				<span class="sr-only">Close</span>
+			</button>	 
+			<%= flash[:user_update_f] %>  		
+		</div>
+		<% end %>
 		<table class="table table-bordered">
 			<tbody>
 				<tr>

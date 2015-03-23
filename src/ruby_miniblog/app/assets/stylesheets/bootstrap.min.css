@@ -6893,6 +6893,7 @@ button.close{
 .date{
 	color: #696666;
 	font-style: italic;
+	width: 172px;
 }
 .breadcrumb{
 padding: 8px 15px;
@@ -6900,4 +6901,7 @@ margin-bottom: 20px;
 list-style: outside none none;
 background-color: #F5F5F5;
 border-radius: 4px;
+}
+.error{
+	color: red
 } 
