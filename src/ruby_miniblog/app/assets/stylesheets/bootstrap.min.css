@@ -1879,7 +1879,9 @@ pre code{
 
 	.col-sm-5{
 		width: 47.667%;
-		height:150px
+		min-height:150px;
+		max-height:150px;
+		height:auto;
 	}
 
 	.col-sm-4{

@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :users
   resources :logins
   resources :posts 
-
+  resources :comments
+  
   get "sign_up"=>"users#new", :as => "sign_up"
   get "log_out" => "logins#destroy", :as => "log_out"
   get "log_in" => "logins#new", :as => "log_in"
