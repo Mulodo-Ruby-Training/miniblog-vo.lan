@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
 
-belongs_to :post
-
-before_save :hash_new_password, :downcase_email, only: [:create,:update]
+before_save :hash_new_password, :downcase_email, :if=>:password_changed?
 #before_update :hash_new_password 
 # check validate all column     
 validates_confirmation_of :password, :if=>:password_changed?
@@ -14,10 +12,19 @@ validates :birthday, length: { maximum: 20 }
 validates :password, length: { in: 6..20 }, :on => :create
 validates_uniqueness_of :username, :email
 validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
-# add avatar
 
-has_attached_file :avatar, :styles => { :medium => "60x60>", :thumb => "30x30>" }, :default_url => "/system/users/avatars/default/:style/missing.jpg"
+# add avatar
+has_attached_file :avatar, :styles => { :medium => "130x130>", :thumb => "100x100>" }, :default_url => "/system/users/avatars/default/:style/missing.jpg"
 validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+# search user
+def self.search_by_user(search)
+	if search
+		where('username like ? or first_name like ? or last_name like ?', "%#{search}%", "%#{search}%", "%#{search}%")
+	else
+		all	
+	end	
+end
 
 # check password blank
 def password_changed?
@@ -34,7 +41,6 @@ end
 
 # create hash password sign up
 def hash_new_password
-	byebug
 	self.password_salt = BCrypt::Engine.generate_salt
 	self.password = BCrypt::Engine.hash_secret(password, password_salt)
   

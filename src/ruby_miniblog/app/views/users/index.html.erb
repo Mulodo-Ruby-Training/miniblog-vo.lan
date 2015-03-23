@@ -1,22 +1,31 @@
 <div class="panel-body">
-  <div class="list-group">
-    <% @users.each do |user| %>
-    <div class="media col-sm-5">
-      <a class="pull-left projectImg" href="#">
-        <%= image_tag user.avatar.url(:thumb),:class =>'img-thumbnail' %>
-      </a>
-      <div class="media-body">
-        <p hidden><%= user.id%></p>
-        <h4 class="media-heading"><%= link_to user.username, user %></a></h4>
-        <h6 class="media-heading"><%= user.created_at %></h6>
-        <p class="text-justify">
-         <%= user.display_name%>
-       </p>
-     </div>
-     <div>
-     <% end %>
-   </div>
+<div class="col-md-10">
+<% @users.each do |user| %>
+<div class="col-md-4">
+  <div class="col-md-5">
+    <a href="#">
+      <%= image_tag user.avatar.url(:thumb),:class =>'img-thumbnail'%>
+    </a>
+  </div>
+  <div class="col-md-7">
+    <div class="title"><%= user.username%></div>
+    <div class="date"> Date join: <%= user.created_at%></div>
+    <div>Firstname: <%= user.first_name %></div>
+    <div>Lastname: <%= user.last_name %></div>
+    <div class="title">
+      <form action="/posts" method ="get">
+        <input hidden name="user_post" value =<%=user.id%>></input>
+        <button type ="submit">View all Post</button>
+      </form>
+    </div>
+  </div>  
+</div>
+<% end %>
+</div>
+</div>
 </div>
 
 
- 
+
+
+

@@ -1,4 +1,6 @@
-
+<script type="text/javascript">
+    $('.datetimepicker').datetimepicker();
+</script>
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<h1 class = "text-center">Edit user</h1>
@@ -33,7 +35,7 @@
 				</tr>
 				<tr>
 					<td><%= f.label :birthday %></td>
-					<td><%= f.text_field :birthday, as: :datetime_picker, wrapper: :ranged_datetime %>(dd/mm/yyyy)</td>
+					<td><%= f.text_field :birthday,:as => :datetime_picker, wrapper: :ranged_datetime %>(dd/mm/yyyy)</td>
 				</tr>
 				<tr>
 					<td><%= f.label :email %></td>
@@ -51,10 +53,14 @@
 					<td><%= f.label :avatar %></td>
 					<td><%= f.file_field :avatar %></td>
 				</tr>
+				<tr>
+					<td><%= f.label :password %></td>
+					<td><%= f.password_field :password, class: 'form-control',:required =>"" %></td>
+				</tr>
 			</tbody>
 		</table>
 		<input hidden name="flag" value="edit"></input>
-		<p class="button text-center"><%= f.submit class: "btn btn-primary" %></p>
+		<p class="button text-center"><%= f.submit class: "btn btn-primary"%></p>
 		<% end %>
 	</div>
 </div>

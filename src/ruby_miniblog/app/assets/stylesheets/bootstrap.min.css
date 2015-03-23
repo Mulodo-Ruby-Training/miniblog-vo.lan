@@ -2,7 +2,8 @@
  * Bootstrap v3.2.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- *//*! normalize.css v3.0.1 | MIT License | git.io/normalize */html{
+ *//*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+ html{
 	font-family:sans-serif;
 	-webkit-text-size-adjust:100%;
 	-ms-text-size-adjust:100%
@@ -1856,7 +1857,8 @@ pre code{
 	}
 
 	.col-sm-10{
-		width: 83.333%
+		width: 83.333%;
+		min-height: 500px
 	}
 
 	.col-sm-9{
@@ -2068,7 +2070,9 @@ pre code{
 	}
 
 	.col-md-10{
-		width:83.33333333%
+		/*width:83.33333333%*/
+		width: 97.333%;
+		margin-top: 21px;
 	}
 
 	.col-md-9{
@@ -6886,3 +6890,14 @@ button.close{
     border-top:1px dotted #bbb;
     padding:10px;
 }
+.date{
+	color: #696666;
+	font-style: italic;
+}
+.breadcrumb{
+padding: 8px 15px;
+margin-bottom: 20px;
+list-style: outside none none;
+background-color: #F5F5F5;
+border-radius: 4px;
+} 

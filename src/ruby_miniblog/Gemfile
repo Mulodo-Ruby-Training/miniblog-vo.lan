@@ -59,4 +59,5 @@ gem 'ckeditor', :git => 'https://github.com/galetahub/ckeditor.git'
 
 # pagination page
 gem 'will_paginate', '~> 3.0.6'
-
+#
+gem 'simple_form'

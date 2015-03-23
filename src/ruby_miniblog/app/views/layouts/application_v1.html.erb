@@ -40,7 +40,6 @@
             </ul>
             <% else %>
             <%= link_to "Sign up", sign_up_path %>
-            <span class="caret"></span></a>
             <% end %>  
           </li>
           <li>
@@ -69,12 +68,12 @@
       <div class="row">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <form action="#" role="search">
+            <form action="/users" role="search">
               <div class="col-lg-6">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search for user name...">
+                  <input type="text" class="form-control" name="search" placeholder="Search for firstname, lastname, username">
                   <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button">Search</button>
+                    <button class="btn btn-primary" type="submit">Search</button>
                   </span>
                   <div></div>
                 </div><!-- /input-group -->

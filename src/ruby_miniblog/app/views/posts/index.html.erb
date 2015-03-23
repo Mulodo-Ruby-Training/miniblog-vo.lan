@@ -1,4 +1,12 @@
+<ol class="breadcrumb">
+<li>
 <%- model_class = Post -%>
+<% if !params[:user_post].blank?%>
+About <%= flash[:count] %> result of 
+<a href="#"><%= flash[:name].username %></a> post
+<%end%>
+</li>
+</ol>
 <div class="panel-body">
   <div class="list-group">
     <% @posts.each do |post| %>
@@ -9,7 +17,7 @@
       <div class="media-body">
         <p hidden><%= post.id%></p>
         <h4 class="media-heading"><%= link_to post.title, post %></a></h4>
-        <h6 class="media-heading"><%= post.created_at %></h6>
+        <h6 class="media-heading date"><%= date_format(post.created_at) %> | Author: <a href="#"><%= post.user.username %></a></h6>
         <p class="text-justify">
          <%= post.description%>
        </p>

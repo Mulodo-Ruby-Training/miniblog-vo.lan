@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base 
-  has_one :user
+  belongs_to :user
+  has_many :comment
 
   validates :description, length: { maximum: 255 }
   validates :content, length: { minimum: 255 }
@@ -8,7 +9,11 @@ class Post < ActiveRecord::Base
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/system/posts/images/default/:style/missing.jpg"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-  default_scope  { order(:created_at => :desc) } # sort order by created_at
+# sort order by created_at
+  default_scope  { order(:created_at => :desc) }
 
-
+# View all post of user  
+  scope :post_of_user, ->(user_post) {where("user_id = #{user_post}")}
+	
 end
+ 
