@@ -1,0 +1,76 @@
+<%- model_class = Post -%>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="thumbnail">
+      <a href="#"><%= image_tag @post.image.url(:medium) %></a>
+      <div class="caption">
+        <h3><a href="#"><%= @post.title %></h3></a>
+        <h6 class="media-heading"><%= @post.created_at %></h6>
+        <p class="text-justify"><%= @post.description%></p>
+        <p class="text-justify"><%= raw(@post.content)%></p>
+        <div id="allHolder">
+          <div id ="commentsHolder">
+            <textarea id ="commentBodyField" rows="3" name="comment" placeholder="Enter your comment..."></textarea>
+          </div>
+          <div class="postCommentButtonHolder">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+        <div class="detailBox">
+          <div class="titleBox">
+            <label>All Comment</label>
+          </div>
+          <div class="commentBox">
+          </div>
+          <div class="actionBox">
+            <ul class="commentList">
+              <li>
+                <div class="commenterImage">
+                  <img src="http://lorempixel.com/50/50/people/6" />
+                </div>
+                <div class="commentText">
+                <cite class="user">user demo
+                <span class="date sub-text">on March 5th, 2015</span>
+                 </cite>
+                  <p class="">Hello this is a test comment.</p> 
+                  <span class="date sub-text"><a href="#">Reply</a></span>
+                </div>
+              </li>
+              <li>
+                <div class="commenterImage">
+                  <img src="http://lorempixel.com/50/50/people/7" />
+                </div>
+                <div class="commentText">
+                <cite class="user">user admin
+                <span class="date sub-text">on March 5th, 2015</span>
+                 </cite>
+                  <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text"><a href="#">Reply</a></span>
+
+                </div>
+              </li>
+              <li>
+                <div class="commenterImage">
+                  <img src="http://lorempixel.com/50/50/people/9" />
+                </div>
+                <div class="commentText">
+                <cite class="user">user test
+                <span class="date sub-text">on March 5th, 2015</span>
+                 </cite>
+                  <p class="">Hello this is a test comment.</p> <span class="date sub-text"><a href="#">Reply</a></span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          <% if current_user.nil? %>
+          <%= link_to "Back", homes_path,:class => 'btn btn-xs btn-danger' %>
+          <%else%>
+          <%= link_to 'Edit', edit_post_path(@post),:class => 'btn btn-default btn-xs' %>
+          <%= link_to "Back", posts_path,:class => 'btn btn-xs btn-danger' %>
+          <%end%>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
