@@ -1,0 +1,52 @@
+<% if !params[:user_post].blank?%>
+<ol class="breadcrumb error">
+<li>
+<%- model_class = Post -%>
+About <%= flash[:count] %> result of 
+<a href="#"><%= flash[:name].username %></a> post
+</li>
+</ol>
+<%end%>
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+      <%= flash[:notice] %>
+    </div>
+<%end%>
+<div class="panel-body">
+  <div class="list-group">
+    <% @posts.each do |post| %>
+    <div class="media col-sm-5">
+      <a class="pull-left projectImg" href="#">
+        <%= image_tag post.image.url(:thumb),:class =>'img-thumbnail' %>
+      </a>
+      <div class="media-body">
+        <p hidden><%= post.id%></p>
+        <h4 class="media-heading"><%= link_to post.title, post %></a></h4>
+        <h6 class="media-heading date"><%= date_format(post.created_at) %> | Author: <a href="#"><%= post.user.username %></a></h6>
+        <p class="text-justify">
+         <%= post.description%>
+       </p>
+       <div class="pull-left">
+        <% if current_user.nil?%>
+        <div></div>
+        <%elsif current_user.id == post.user_id %>
+        <%= link_to 'Edit', edit_post_path(post),:class => 'btn btn-default btn-xs' %>
+        <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" },:class => 'btn btn-xs btn-danger' %>
+        <%end%>
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
+  <% end %>
+  <% if current_user.nil?%>
+</br>
+<%else%>
+<%end%>
+</div>
+</div>
+<%= will_paginate @posts%>
