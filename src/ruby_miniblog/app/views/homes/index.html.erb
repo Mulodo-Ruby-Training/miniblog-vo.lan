@@ -1,19 +1,19 @@
-<%- model_class = Post -%>
-<div class="panel-body">
-  <div class="list-group">
-<% @posts.each do |post| %>
-    <div class="media col-sm-5">
-      <a class="pull-left projectImg" href="#">
-        <%= image_tag post.image.url(:thumb), :class =>'img-thumbnail' %>
-      </a>
-      <div class="media-body">
-        <p hidden><%= post.id%></p>
-        <h4 class="media-heading"><%= link_to post.title, post %></h4>
-        <h6 class="media-heading date"><%= date_format(post.created_at) %> | Author: <a href="#"><%= post.user.username %></a></h6>
-        <p class="text-justify">
-         <%= post.description%>
-       </p>
-       <div class="pull-left">
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".dropdown-toggle").dropdown();
+  });  
+</script>
+<div class="col-lg-10">
+  <% @posts.each_with_index do |post, idx| %>
+  <% if idx % 2 == 0 %>
+  <div class="row">
+    <%end %>
+    <div class="col-md-6 portfolio-item">
+      <div class="col-sm-4">
+        <a href="#">
+          <%= image_tag post.image.url(:thumb), :class =>'img-thumbnail' %>
+        </a>
+        <div class="text-center edit">
          <% if current_user.nil? %>
          <div>
          </div>
@@ -23,12 +23,51 @@
          <%end%>
        </div>
      </div>
-     <div>
-     </div>
-   </div>
-   <%end%>
+     <div class="col-sm-8">
+      <div class="dropdown badge pull-right">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b> </a>
+        <ul class="dropdown-menu">
+          <li><a href=<%= post_path(post)%>>Read more</a></li>
+          <li><a href="#">Share link</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Another action</a></li>
+        </ul>
+      </div>
+      <div class="title">
+        <a href="#"><%= link_to post.title.capitalize, post%></a>
+      </div>
+      <div class="date"> <%= date_format(post.created_at) %> | Author: <a href="#"><%= post.user.username%></a></div>
+      <p class="text-justify">
+       <%= post.description %>
+     </p>
+   </div>                
+ </div>
+ <% if idx % 2 != 0 %>
+</div> 
+<%end %>
+<%end%>
+<hr />
+<div class="row text-center">
+  <div class="col-lg-12">
+   <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
  </div>
 </div>
-<%= will_paginate @posts %>
+
+</div>
+<div class="col-lg-2">
+  <div class="well">Post read more<span class="badge pull-right"><%=@post_read_mores.count%></span></div>
+  <ul class="list-group">
+    <%@post_read_mores.each do |post_read_more|%>
+    <li class="list-group-item">
+      <i class="glyphicon">(<%= post_read_more.count_view%>)</i> 
+      <small>(<%= date_format(post_read_more.created_at)%>)
+      </small> 
+      <%=link_to post_read_more.title.capitalize,post_read_more %></li>
+      <%end%>
+    </ul>
+  </div>
+
+
+
 
 

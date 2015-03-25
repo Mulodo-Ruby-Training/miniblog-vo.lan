@@ -5,28 +5,38 @@ class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-  
+    @post_read_mores = Post.all.order("count_view desc").limit(4)
     if params[:user_post]
-       @posts = Post.post_of_user(params[:user_post]).paginate(:page => params[:page], :per_page => 10)
+       @posts = Post.post_of_user(params[:user_post]).paginate(:page => params[:page], :per_page => 4)
        flash[:count] = @posts.count
        flash[:name] = User.select(:id,:username).find_by_id(params[:user_post])
        
     else
-       @posts = Post.all.paginate(:page => params[:page], :per_page => 10)
+       @posts = Post.all.paginate(:page => params[:page], :per_page => 4)
 
     end
   end
 
   def show
-    
+    @comments = @post.comment
+    @post.update_count_view(@post.id, @post.count_view)
+
   end
 
   def new
     @post = Post.new
+    
   end
 
 
   def edit
+
+  end
+  def update_comment
+   byebug
+    @post = Post.find 10
+    redirect_to @post
+
   end
 
   def create

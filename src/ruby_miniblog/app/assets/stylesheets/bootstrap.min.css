@@ -4594,7 +4594,7 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 .navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>.active>a:focus{
 	color:#fff;
-	background-color:#080808
+	background-color:#0B6FC6
 }
 
 .navbar-inverse .navbar-nav>.disabled>a,.navbar-inverse .navbar-nav>.disabled>a:hover,.navbar-inverse .navbar-nav>.disabled>a:focus{
@@ -4905,7 +4905,7 @@ a.label:hover,a.label:focus{
 	text-align:center;
 	white-space:nowrap;
 	vertical-align:baseline;
-	background-color:#777;
+	background-color:#E4E5E7;
 	border-radius:10px
 }
 
@@ -6868,7 +6868,7 @@ button.close{
 }
 .commenterImage img {
     width:100%;
-    border-radius:50%;
+    border-radius:10%;
 }
 .commenterAvatar {
 	width: 40px;
@@ -6895,15 +6895,25 @@ button.close{
 .date{
 	color: #696666;
 	font-style: italic;
-	width: 172px;
 }
 .breadcrumb{
-padding: 8px 15px;
-margin-bottom: 20px;
-list-style: outside none none;
-/*background-color: #F5F5F5;*/
-border-radius: 4px;
+	padding: 8px 15px;
+	margin-bottom: 20px;
+	list-style: outside none none;
+	/*background-color: #F5F5F5;*/
+	border-radius: 4px;
 }
 .error{
 	color: red
+}
+.title{
+	font-size: 14px;
+	font-size: 14px;
+	min-height: 30px;
+	height: auto;
+	margin-bottom: 4px;
+} 
+.edit{
+	margin-top: 5px;
+	margin-left: -22px;
 } 

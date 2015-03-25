@@ -14,6 +14,13 @@ class Post < ActiveRecord::Base
 
 # View all post of user  
   scope :post_of_user, ->(user_post) {where("user_id = #{user_post}")}
-	
+
+# update count view for post
+def update_count_view(id,count_view)
+ post = Post.find id
+ post = post.update(:count_view => count_view + 1)
+  
+end
+
 end
  

@@ -5,18 +5,19 @@ Rails.application.routes.draw do
 
   resources :users
   resources :logins
-  resources :posts 
+  resources :posts do 
+    member do
+      post "update_comment"
+    end
+  end
   resources :comments
-  
   get "sign_up"=>"users#new", :as => "sign_up"
   get "log_out" => "logins#destroy", :as => "log_out"
   get "log_in" => "logins#new", :as => "log_in"
   get "change_password" => "users#change_password",:as =>"change_password"
-  get 'homes/' =>'homes#index'
-  get 'posts/:id' => 'post#show'
-  get '/users/:id' => 'users#update'
-
-
+  get "homes/" =>"homes#index"
+  get "posts/:id" => "post#show"
+  get "/users/:id" => "users#update"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
