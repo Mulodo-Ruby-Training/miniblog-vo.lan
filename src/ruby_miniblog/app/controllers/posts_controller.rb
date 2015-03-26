@@ -33,10 +33,12 @@ class PostsController < ApplicationController
 
   end
   def update_comment
-   byebug
-    @post = Post.find 10
-    redirect_to @post
-
+    byebug
+    @post = Post.find(params[:comment][:post_id])
+    comment = Comment.find(params[:comment][:id])
+    if comment.update(:content =>params[:comment][:content])
+      redirect_to @post
+    end
   end
 
   def create

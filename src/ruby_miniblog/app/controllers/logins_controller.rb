@@ -8,9 +8,9 @@ def create
 	user = User.authenticate(params[:username], params[:password])
 	if user
 		session[:user_id] = user.id
-		redirect_to homes_path, :notice => "Logged in!"
+		redirect_to homes_path, :login => "Logged in!"
 	else
-		flash.now.alert = "Invalid username or password"
+		flash[:login] = "Invalid username or password"
 		render "new"
 	end
 end

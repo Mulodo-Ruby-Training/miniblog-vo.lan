@@ -1611,7 +1611,9 @@ pre code{
 
 @media (min-width:1200px){
 	.container{
-		width:1170px
+		width:1170px;
+        min-height: 500px;
+        height:auto;
 	}
 
 }
@@ -3449,7 +3451,7 @@ tbody.collapse.in{
 .dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus{
 	color:#262626;
 	text-decoration:none;
-	background-color:#f5f5f5
+	background-color:#D0E3DA;
 }
 
 .dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus{
@@ -4999,7 +5001,8 @@ a.list-group-item.active>.badge,.nav-pills>.active>a>.badge{
 
 .thumbnail>img,.thumbnail a>img{
 	margin-right:auto;
-	margin-left:auto
+	/*margin-left:auto*/
+	margin-left: 10px;
 }
 
 a.thumbnail:hover,a.thumbnail:focus,a.thumbnail.active{
@@ -6917,3 +6920,8 @@ button.close{
 	margin-top: 5px;
 	margin-left: -22px;
 } 
+.styled-select{
+	height: 40px;
+	font-size: 14px;
+	margin-left:4px;
+}

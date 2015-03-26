@@ -1,13 +1,8 @@
-var default_picker_options = {
-
-}
-
 $(document).on('ready page:change', function() {
-  $('.datetimepicker').datetimepicker(default_picker_options);
+  $('.datetimepicker').datetimepicker({
+    // put here your custom picker options, that should be applied for all pickers
 
-  $('.timepicker').datetimepicker(default_picker_options);
-
-  $('.datepicker').datetimepicker(default_picker_options);
+  });
 
   $('.datetimerange').each(function(){
     var $this = $(this)

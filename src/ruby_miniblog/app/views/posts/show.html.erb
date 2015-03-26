@@ -19,7 +19,6 @@
 });
 </script>
 <script type="text/javascript">
-
   var hidden = 1;
   function update_comment(){
 
@@ -89,7 +88,7 @@
                         <%=comment.content%>
                       </textarea>
                       <input hidden name="comment[post_id]" value=<%=@post.id%>></input>
-                      <input hidden name="comment[post_id]" value=<%=comment.id%>></input>
+                      <input hidden name="comment[id]" value=<%=comment.id%>></input>
                     </div>
                     <div class="postCommentButtonHolder">
                       <button type="submit" id="comment" class="btn btn-primary">Save</button>
@@ -104,11 +103,11 @@
         </div>
       </div>
       <p>
-        <% if current_user.nil? %>
-        <%= link_to "Back", homes_path,:class => 'btn btn-xs btn-danger' %>
-        <%else%>
+        <% if current_user &&  current_user.id == @post.user_id%>
         <%= link_to 'Edit', edit_post_path(@post),:class => 'btn btn-default btn-xs' %>
         <%= link_to "Back", posts_path,:class => 'btn btn-xs btn-danger' %>
+        <%else%>
+        <%= link_to "Back", homes_path,:class => 'btn btn-xs btn-danger' %>
         <%end%>
       </p>
     </div>

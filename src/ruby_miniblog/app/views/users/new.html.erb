@@ -1,67 +1,76 @@
-
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<h1 class = "text-center">Register User</h1>
-		<%= form_for @user do |f| %>
-		<% if @user.errors.any? %>
-		<div class="error_messages">
-			<h2>Form is invalid</h2>
-			<ul>
-				<% for message in @user.errors.full_messages %>
-				<li><%= message %></li>
-				<% end %>
-			</ul>
+	<% if flash[:notice] %>
+		<div class="alert alert-danger" role="alert">
+			<button type="button" class="close" data-dismiss="alert">
+				<span aria-hidden="true">&times;</span>
+				<span class="sr-only">Close</span>
+			</button>
+			<%= flash[:notice] %>			
 		</div>
-		<% end %>
-		<table class="table table-bordered">
-			<tbody>
-				<tr>
-					<td><%= f.label :username %></td>
-					<td><%= f.text_field :username, class: 'form-control'%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :first_name %></td>
-					<td><%= f.text_field :first_name, class: 'form-control'%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :last_name %></td>
-					<td><%= f.text_field :last_name, class: 'form-control'%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :display_name %></td>
-					<td><%= f.text_field :display_name, class: 'form-control'%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :birthday %></td>
-					<td><%= f.text_field :birthday, as: :datetime_picker, wrapper: :ranged_datetime %>(dd/mm/yyyy)</td>
-				</tr>
-				<tr>
-					<td><%= f.label :email %></td>
-					<td><%= f.text_field :email, class: 'form-control'%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :gender %></td>
-					<td><%= f.select(:gender,options_for_select(genders, :selected => f.object.status))%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :status %></td>
-					<td><%= f.select(:status,options_for_select(active_status, :selected => f.object.status))%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :avatar %></td>
-					<td><%= f.file_field :avatar %></td>
-				</tr>
-				<tr>
-					<td><%= f.label :password %></td>
-					<td><%= f.password_field :password, class: 'form-control' %></td>
-				</tr>
-				<tr>
-					<td><%= f.label :password_confirmation %></td>
-					<td><%= f.password_field :password_confirmation, class: 'form-control' %></td>
-				</tr>
-			</tbody>
-		</table>
-		<p class="button text-center"><%= f.submit class: "btn btn-primary" %></p>
-		<% end %>
+	<%end%>
+		<div class="row">
+			<div class="col-xs-12 col-sm-offset-1">
+				<form action =<%=users_path%> method = "post" role="form">
+					<h2>Please Sign Up <small>It's free and always will be.</small></h2>
+					<hr class="colorgraph">
+					<div class="form-group">
+						<input type="text" name="user[username]" id="user_name" class="form-control input-lg" placeholder="User Name" tabindex="3" required>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-6">
+							<div class="form-group">
+								<input type="text" name="user[first_name]" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" required>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6">
+							<div class="form-group">
+								<input type="text" name="user[last_name]" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" required>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="text" name="user[display_name]" id="display_name" class="form-control input-lg" placeholder="Display Name" tabindex="3" required>
+					</div>
+					<div class="form-group">
+						<input type="email" name="user[email]" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" data-validation-matches-match="email">
+					</div>
+					<div class="form-group">
+						<input type="text" name="user[birthday]" id="birthday" class="form-control input-lg datetimepicker" placeholder="Birth day" tabindex="5" required>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-6">
+							<div class="form-group">
+								<input type="password" name="user[password]" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6">
+							<div class="form-group">
+								<input type="password" name="user[password_confirmation]" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-8">
+							<div class="col-xs-2">
+								<h4>Gender:</h4>
+							</div>
+							<div class="col-xs-6">
+								<select class="styled-select" name="gender" id="gender">
+									<option value="0">Female</option>
+									<option value="1" selected="true">Male</option>
+									<option value="2">Other</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<hr class="colorgraph">
+					<div class="row">
+						<div class="col-xs-12 col-md-6"><input type="submit" id ="check_login" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+						<div class="col-xs-12 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 </div>
