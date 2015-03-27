@@ -1,188 +1,156 @@
-<div class="row">
-	<div class="col-md-6 col-md-offset-3">
-		<h1 class = "text-center">Edit user</h1>
-		<%= form_for @user do |f| %>
-		<% if @user.errors.any? %>
-		<div class="error_messages">
-			<h2>Form is invalid</h2>
-			<ul>
-				<% for message in @user.errors.full_messages %>
-				<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
+<script type="text/javascript">
+$(function () {
+	$('#user_birthday').datetimepicker({
+        language:  'en',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0,
+		format:"dd-mm-yyyy",
+    });
+});
+</script>
+<%= form_for @user do |f| %>
+<% if @user.errors.any? %>
+<div class="error_messages">
+	<h2>Form is invalid</h2>
+	<ul>
+		<% for message in @user.errors.full_messages %>
+		<li><%= message %></li>
 		<% end %>
-		<% if flash[:user_update] %>
-		<div class="alert alert-success" role="alert">
-			<button type="button" class="close" data-dismiss="alert">
-				<span aria-hidden="true">&times;</span>
-				<span class="sr-only">Close</span>
-			</button>
-			<%= flash[:user_update] %>
-		</div>
-		<% end %>
-		<% if flash[:user_update_f] %>
-		<div class="alert alert-danger" role="alert">
-			<button type="button" class="close" data-dismiss="alert">
-				<span aria-hidden="true">&times;</span>
-				<span class="sr-only">Close</span>
-			</button>	 
-			<%= flash[:user_update_f] %>  		
-		</div>
-		<% end %>
-		 
-		<form class="form-horizontal" role="form">
-			<div class="row">
-				<div class="col-md-12">
-					<span class="btn btn-primary blue-tab no-blue-border-top">Basic info</span>
-				</div>
-			</div>
-			<div class="container-fluid">
-				<div class="col-md-6 col-md-offset-1" style="margin-top:10px">
-					<div class="form-group">
-					<%= f.label :username, :class=>"col-md-4 control-label" %>
-					<div class="col-md-8">
-					 <%= f.text_field :username, class: 'form-control'%>
-					</div>
-					</div>
-
-					<div class="form-group">
-						<label for="last-name" class="col-md-3 control-label">Last name</label>
-						<div class="col-md-9">
-							<input value="Hoang Viet" type="text" class="form-control" id="last-name">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="gender" class="col-md-3 control-label">Gender</label>
-						<div class="col-md-9">
-							<select class="styled-select" name="gender" id="gender">
-								<option value="0">Female</option>
-								<option value="1" selected="true">Male</option>
-							</select>									
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="birthday" class="col-md-3 control-label">Birthday</label>
-						<div class="col-md-9" style="display:inline-flex">
-							Birthday
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3" style="margin-top:10px">
-					<div class="fileUpload btn btn-primary">	
-						<span>Change Avatar</span>
-						<input onchange="handlerInputFileChange(this)" class="upload" type="file">
-					</div>	
-					<img id ="image-upload" class="img-thumbnail" style="width:150px;height:150px;" src="img/200x200.gif" alt="Avatar User" />
-				</div>
-			</div>
-
-			<div class="row" style="margin-top:20px;">
-				<div class="col-md-12">
-					<span class="btn btn-primary blue-tab no-blue-border-top">Contact info</span>
-				</div>
-			</div>
-
-
-			<div class="container-fluid blue-border">
-				<div class="col-md-6 col-md-offset-1" style="margin-top:10px">
-					<div class="form-group">
-						<label for="address" class="col-md-3 control-label">Addreess</label>
-						<div class="col-md-9">
-							<input value="Hoc Mon" type="text" class="form-control" id="address">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="city" class="col-md-3 control-label">City</label>
-						<div class="col-md-9">
-							<select class="styled-select" name="gender" id="city">
-								<option value="Ho Chi Minh" selected="true">Ho Chi Minh</option>
-								<option value="Da Nang">Da Nang</option>
-								<option value="Ha Noi">Ha Noi</option>
-							</select>										
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="email" class="col-md-3 control-label">Email</label>
-						<div class="col-md-9">
-							<input value="hoangvietanh@yahoo.com" type="email" class="form-control" id="email">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="mobile" class="col-md-3 control-label">Mobile</label>
-						<div class="col-md-9">
-							<input value="0169.8616.831" type="text" class="form-control" id="mobile">
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row" style="margin-top:20px">
-				<div class="col-md-12">
-					<span class="btn btn-primary blue-tab no-blue-border-top">Comfirm</span>
-				</div>
-			</div>
-			<div class="container-fluid blue-border">
-				<div class="col-md-12" style="margin-top:10px;margin-bottom:10px;margin-left:auto;margin-right:auto;text-align:center">
-					<button type="submit" class="btn btn-primary" style="border-radius:0px;">OK</button>
-					<button class="btn btn-primary" style="border-radius:0px;">CANCEL</button>
-				</div>
-			</div>
-		</form>
-
-
-		====================================================================
-		<table class="table table-bordered">
-			<tbody>
-				<tr>
-					<td><%= f.label :username %></td>
-					<td><%= f.text_field :username, class: 'form-control'%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :first_name %></td>
-					<td><%= f.text_field :first_name, class: 'form-control'%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :last_name %></td>
-					<td><%= f.text_field :last_name, class: 'form-control'%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :display_name %></td>
-					<td><%= f.text_field :display_name, class: 'form-control'%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :birthday %></td>
-					<td><%= f.text_field :birthday,:as => :datetime_picker, wrapper: :ranged_datetime %>(dd/mm/yyyy)</td>
-				</tr>
-				<tr>
-					<td><%= f.label :email %></td>
-					<td><%= f.text_field :email, class: 'form-control'%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :gender %></td>
-					<td><%= f.select(:gender,options_for_select(genders, :selected => f.object.status))%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :status %></td>
-					<td><%= f.select(:status,options_for_select(active_status, :selected => f.object.status))%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :avatar %></td>
-					<td><%= f.file_field :avatar %></td>
-				</tr>
-				<tr>
-					<td><%= f.label :password %></td>
-					<td><%= f.password_field :password, class: 'form-control',:required =>"" %></td>
-				</tr>
-			</tbody>
-		</table>
-		<input hidden name="flag" value="edit"></input>
-		<p class="button text-center"><%= f.submit class: "btn btn-primary"%></p>
-		<% end %>
-	</div>
+	</ul>
 </div>
+<% end %>
+<div class="container-fluid" style="padding-top:15px;padding-bottom:20px">
+	<% if flash[:user_update] %>
+	<div class="alert alert-success" role="alert">
+		<button type="button" class="close" data-dismiss="alert">
+			<span aria-hidden="true">&times;</span>
+			<span class="sr-only">Close</span>
+		</button>
+		<%= flash[:user_update] %>
+	</div>
+	<% end %>
+	<% if flash[:user_update_f] %>
+	<div class="alert alert-danger" role="alert">
+		<button type="button" class="close" data-dismiss="alert">
+			<span aria-hidden="true">&times;</span>
+			<span class="sr-only">Close</span>
+		</button>	 
+		<%= flash[:user_update_f] %>  		
+	</div>
+	<% end %>
+	<form class="form-horizontal" role="form">
+		<div class="row">
+			<div class="col-md-12">
+				<span class="btn btn-primary blue-tab no-blue-border-top">Basic info</span>
+			</div>
+		</div>
+		<div class="container-fluid blue-border">
+			<div class="col-md-6 col-md-offset-1">
+				<div class="form-group">
+					<%= f.label :username, :class => 'col-md-3 control-label' %>
+					<div class="col-md-9 top_edit">
+						<%= f.text_field :username, :class => 'form-control',:required=>"" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<%= f.label :first_name, :class => 'col-md-3 control-label' %>
+					<div class="col-md-9 top_edit" >
+						<%= f.text_field :username, :class => 'form-control',:required=>"" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<%= f.label :last_name, :class => 'col-md-3 control-label' %>
+					<div class="col-md-9 top_edit">
+						<%= f.text_field :last_name, :class => 'form-control',:required=>"" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="gender" class="col-md-3 control-label">Gender</label>
+					<div class="col-md-9 top_edit">
+						<%= f.select(:gender,options_for_select(genders, :selected => f.object.status),{},{:class => 'form-control'})%>							
+					</div>
+				</div>
+				<div class="form-group">
+					<%= f.label :birthday, :class => 'col-md-3 control-label' %>
+					<div class="col-md-9 top_edit bottom_edit" style="display:inline-flex">
+						<%= f.text_field :birthday, :class => 'form-control' %>	
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3" style="margin-top:10px">
+				<div class="fileUpload btn btn-primary">	
+					<span>Browse avatar</span>
+					<%= f.file_field :avatar, :onchange=>"handlerInputFileChange(this)",:class=>"upload"%>
+				</div>	
+				<%= image_tag @user.avatar.url(:thumb), :class =>'img-thumbnail',:id =>"image-upload", :style=>"width:150px;height:150px;" %> 
+			</div>
+		</div>
+
+		<div class="row" style="margin-top:20px;">
+			<div class="col-md-12">
+				<span class="btn btn-primary blue-tab no-blue-border-top">Contact info</span>
+			</div>
+		</div>
+		<div class="container-fluid blue-border">
+			<div class="col-md-6 col-md-offset-1" style="margin-top:10px">
+				<div class="form-group">
+					<%= f.label :email, :class => 'col-md-3 control-label' %>
+					<div class="col-md-9 top_edit">
+						<%= f.text_field :email, :class => 'form-control',:required=>"" %>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<%= f.label :address, :class => 'col-md-3 control-label' %>
+					<div class="col-md-9 top_edit bottom_edit">
+						<%= f.text_field :address, :class => 'form-control' %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top:20px">
+			<div class="col-md-12">
+				<span class="btn btn-primary blue-tab no-blue-border-top">Comfirm</span>
+			</div>
+		</div>
+		<div class="container-fluid blue-border">
+			<div class="col-md-6 col-md-offset-1" >
+				<div class="form-group">
+					<%= f.label :password, :class => 'col-md-3 control-label' %>
+					<div class="col-md-9 top_edit bottom_edit">
+						<input type="password" class="form-control" name="user[password]" id="user_password" type="text" required >
+					</div>
+					<input hidden name="flag" value="edit"></input>
+				</div>
+				<div class="form-group btn_save">	
+					<button type="submit" class="btn btn-primary" style="border-radius:0px;">OK</button>
+					<%= link_to 'CANCEL',homes_path, :class=>"btn btn-primary", :style=>"border-radius:0px;"%>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</div>
+<% end %>
+
+<script>
+	function handlerInputFileChange(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#image-upload')
+				.attr('src', e.target.result);
+			};
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
 

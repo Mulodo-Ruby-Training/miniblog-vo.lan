@@ -18,7 +18,8 @@ private
   end
   
   def all_post
-    @post_read_mores = Post.all.order("count_view desc").limit(4)
+    add_breadcrumb "Home", :homes_path
+    @post_read_mores = Post.where("count_view > 0").order("count_view desc").limit(4)
     @posts = Post.all.paginate(:page => params[:page], :per_page => 4)
 
   end

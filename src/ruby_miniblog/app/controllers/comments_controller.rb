@@ -6,6 +6,7 @@ before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
 def new
 	@comment = Comment.new
+
 end
 
 def show
@@ -15,6 +16,7 @@ end
 
 def edit
 	render :partial =>false
+
 end
 
 def update
@@ -52,6 +54,7 @@ private
 def set_comment
 	@comment = Comment.find(params[:id])
 	@post = Post.find(@comment.post_id)
+	
 end
 
 # set params for comment

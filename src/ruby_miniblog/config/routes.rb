@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
-  root :to => "users#new"
+  root :to => "homes#index"
 
   resources :users
   resources :logins
@@ -11,10 +11,10 @@ Rails.application.routes.draw do
     end
   end
   resources :comments
+
   get "sign_up"=>"users#new", :as => "sign_up"
   get "log_out" => "logins#destroy", :as => "log_out"
   get "log_in" => "logins#new", :as => "log_in"
-  get "change_password" => "users#change_password",:as =>"change_password"
   get "homes/" =>"homes#index"
   get "posts/:id" => "post#show"
   get "/users/:id" => "users#update"

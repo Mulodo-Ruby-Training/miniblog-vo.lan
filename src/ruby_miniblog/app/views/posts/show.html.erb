@@ -21,7 +21,6 @@
 <script type="text/javascript">
   var hidden = 1;
   function update_comment(){
-
     if(hidden ==1){
       document.getElementById('comment_f').style.display = 'block'
       document.getElementById('comment_update').focus()
@@ -32,7 +31,6 @@
     }
     return hidden
   };
-  
 </script>
 <%- model_class = Post -%>
 <div class="row">
@@ -79,13 +77,14 @@
                 </cite>
                 <p class=""><%= comment.content%></p>
                 <%if current_user && current_user.id == comment.user_id%>
-                <span style="cursor:pointer" onclick="update_comment()">Edit</span>
+                <span id = "<%= "cm_"<< comment.id.to_s %>" style="cursor:pointer">Edit</span>
                 <%= link_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Are you sure?" } %>
-                <div id="comment_f" style="display:none">
+                <div name="<%= "cm_"<< comment.id.to_s %>" style="display:none">
+                Edit
                 <form action=<%= update_comment_post_path%> method="post">
                     <div id ="commentsHolder">
                       <textarea id ="comment_update" rows="3" name="comment[content]">
-                        <%=comment.content%>
+                        <%= comment.content%>
                       </textarea>
                       <input hidden name="comment[post_id]" value=<%=@post.id%>></input>
                       <input hidden name="comment[id]" value=<%=comment.id%>></input>
@@ -114,3 +113,29 @@
   </div>
 </div>
 </div>
+
+<div id="pick_1">moo1</div>
+<div id="pick_2">moo2</div>
+<div id="pick_3">moo3</div>
+
+<script>
+var hidden = 1;
+$('[id^=cm_]').click(
+    function(event) {
+    var a = event.target.id;
+    alert(a);
+    //alert(document.getElementsByName(a).val());
+    if(hidden ==1){
+      document.getElementsByName(a).style.display = 'block'
+      document.getElementById('comment_update').focus()
+      hidden =2;
+    }else{
+      document.getElementsByName(a).style.display = 'none'
+      hidden =1;
+    }
+    return hidden
+        // Do something with the id # here: 
+        //alert('Picked: '+ event.target.id.slice(5));
+    }
+);
+</script>

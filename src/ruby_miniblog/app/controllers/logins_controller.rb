@@ -1,6 +1,8 @@
 class LoginsController < ApplicationController
 
 def new
+	add_breadcrumb "Login", :log_in_path
+	
 end
 
 def create
@@ -18,6 +20,7 @@ end
 def destroy
 	session[:user_id] = nil
 	redirect_to homes_path, :notice_out => "Logged out!"
+
 end
 
 end

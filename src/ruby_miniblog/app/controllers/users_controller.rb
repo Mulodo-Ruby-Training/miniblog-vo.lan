@@ -4,20 +4,25 @@ class UsersController < ApplicationController
 
   skip_before_action :verify_authenticity_token
 
-  def index 
+  def index
+    add_breadcrumb "All users", :users_path 
     @users = User.search_by_user(params[:search])
 
   end
 
   def new
+    add_breadcrumb "Signup", :sign_up_path
     @user = User.new
 
   end
 
-  def edit
+  def edit 
+    add_breadcrumb "Edit profile", :edit_user_path
 
   end
+
   def show
+    add_breadcrumb "Change password", :user_path
 
   end
 
@@ -59,18 +64,22 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+
   end
 
   def user_params
     params.require(:user).permit(:email, :username, :first_name, :last_name, :display_name, :birthday, :avatar,:gender, :status, :password, :password_salt)
+
   end
 
   def user_edit_params
-    params.require(:user).permit(:email, :username, :first_name, :last_name, :display_name, :birthday, :avatar,:gender,:password, :password_salt)
+    params.require(:user).permit(:email, :username, :first_name, :last_name, :display_name, :birthday, :avatar,:gender,:address,:password, :password_salt)
+
   end
 
   def user_change_password_params
     params.require(:user).permit(:password, :password_salt)
+    
   end
 
 end

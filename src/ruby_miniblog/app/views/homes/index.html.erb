@@ -3,6 +3,8 @@
     $(".dropdown-toggle").dropdown();
   });  
 </script>
+
+
 <div class="col-lg-10">
   <% @posts.each_with_index do |post, idx| %>
   <% if idx % 2 == 0 %>
@@ -46,8 +48,9 @@
    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
  </div>
 </div>
-
 </div>
+
+
 <div class="col-lg-2">
   <div class="well">Post read more<span class="badge pull-right"><%=@post_read_mores.count%></span></div>
   <ul class="list-group">
@@ -59,7 +62,7 @@
       <%=link_to post_read_more.title.capitalize,post_read_more %></li>
       <%end%>
     </ul>
-  </div>
+</div>
 
 
 

@@ -58,7 +58,7 @@
 </div>
 <%elsif (idx % 2 != 0 && idx < (@posts.count -1) && @posts.count % 2 != 0 )%>
 </div>
-<%elsif idx % 2 == 0 && idx == (@posts.count -1) %>
+<%elsif idx % 2 == 0 && idx == (@posts.count -1) && @posts.count % 2 != 0 %>
 </div>
 <%end %>
 <%end%>

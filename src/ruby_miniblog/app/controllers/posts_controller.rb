@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @post_read_mores = Post.all.order("count_view desc").limit(4)
+    add_breadcrumb "Posts", :posts_path
+    @post_read_mores = Post.where("count_view > 0").order("count_view desc").limit(4)
     if params[:user_post]
        @posts = Post.post_of_user(params[:user_post]).paginate(:page => params[:page], :per_page => 4)
        flash[:count] = @posts.count
@@ -18,20 +19,24 @@ class PostsController < ApplicationController
   end
 
   def show
+    add_breadcrumb "Post", :post_path
     @comments = @post.comment
     @post.update_count_view(@post.id, @post.count_view)
 
   end
 
   def new
+     add_breadcrumb "New post", :new_post_path
     @post = Post.new
     
   end
 
 
   def edit
+   add_breadcrumb "Edit post", :edit_post_path
 
   end
+
   def update_comment
     byebug
     @post = Post.find(params[:comment][:post_id])
@@ -78,12 +83,14 @@ class PostsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_post
+  def set_post
       @post = Post.find(params[:id])
-    end
+
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
+  def post_params
       params.require(:post).permit(:title, :content, :description, :user_id, :status,:image)
-    end
+      
+  end
 end

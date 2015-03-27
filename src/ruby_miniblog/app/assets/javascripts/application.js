@@ -15,9 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require ckeditor/init
-//= require pickers
 //= require bootstrap-datetimepicker
-
 // You may include any languages (optional)
 
 
