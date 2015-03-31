@@ -2,6 +2,7 @@ class LoginsController < ApplicationController
 
 def new
 	add_breadcrumb "Login", :log_in_path
+	@title = "Login"
 	
 end
 

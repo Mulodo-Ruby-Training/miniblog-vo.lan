@@ -1,11 +1,9 @@
 <% if !params[:user_post].blank?%>
-<ol class="breadcrumb error">
-  <li>
+  <h4 class="error top_error">
     <%- model_class = Post -%>
     About <%= flash[:count] %> result of 
     <a href="#"><%= flash[:name].username %></a> post
-  </li>
-</ol>
+  </h4>
 <%end%>
 <% if flash[:notice] %>
 <div class="alert alert-success" role="alert">
@@ -16,12 +14,7 @@
   <%= flash[:notice] %>
 </div>
 <%end%>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $(".dropdown-toggle").dropdown();
-  });  
-</script>
-<div class="col-lg-10">
+<div class="col-md-12">
   <% @posts.each_with_index do |post, idx| %>
   <% if idx % 2 == 0 %>
   <div class="row">
@@ -29,7 +22,7 @@
     <div class="col-md-6 portfolio-item">
       <div class="col-sm-4">
         <a href="#">
-          <%= image_tag post.image.url(:thumb), :class =>'img-thumbnail' %>
+          <%= image_tag post.image.url(:thumb), :class => 'img-thumbnail' %>
         </a>
      </div>
      <div class="col-sm-8">
@@ -38,14 +31,17 @@
         <ul class="dropdown-menu">
           <li><a href=<%= post_path(post)%>>Read more</a></li>
           <% if current_user && current_user.id == post.user_id%>
-          <li><%= link_to 'Edit', edit_post_path(post)%></li>
-          <li> <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }%></li>
+          <li>
+            <%= link_to "Edit", edit_post_path(post)%>  
+          </li>
+          <li> 
+            <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }%>
+          </li>
           <%end%>
-          <li class="divider"></li>
-          <li><a href="#">Another action</a></li>
         </ul>
       </div>
       <div class="title">
+        <span class="icon-bar"></span>
         <a href="#"><%= link_to post.title.capitalize, post%></a>
       </div>
       <div class="date"> <%= date_format(post.created_at) %> | Author: <a href="#"><%= post.user.username%></a></div>
@@ -54,31 +50,21 @@
      </p>
    </div>                
  </div>
- <% if idx % 2 != 0 && @posts.count % 2 == 0 %>
-</div>
-<%elsif (idx % 2 != 0 && idx < (@posts.count -1) && @posts.count % 2 != 0 )%>
-</div>
-<%elsif idx % 2 == 0 && idx == (@posts.count -1) && @posts.count % 2 != 0 %>
-</div>
+ <% if idx % 2 != 0 %>
+</div> 
 <%end %>
 <%end%>
-
+<%if @posts.count%2!=0 %>
+</div>
+<%end%>
 <div class="row text-center">
   <div class="col-lg-12">
    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
  </div>
 </div>
 </div>
-<div class="col-lg-2">
-  <div class="well">Post read more<span class="badge pull-right"><%=@post_read_mores.count%></span>
-  </div>
-  <ul class="list-group">
-    <%@post_read_mores.each do |post_read_more|%>
-    <li class="list-group-item">
-      <i class="glyphicon">(<%= post_read_more.count_view%>)</i> 
-      <small>(<%= date_format(post_read_more.created_at)%>)
-      </small> 
-      <%=link_to post_read_more.title.capitalize,post_read_more %></li>
-      <%end%>
-    </ul>
-</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".dropdown-toggle").dropdown();
+  });  
+</script>

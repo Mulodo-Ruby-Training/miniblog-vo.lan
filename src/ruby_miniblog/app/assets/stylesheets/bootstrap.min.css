@@ -1410,7 +1410,7 @@ a.bg-danger:hover{
 
 .page-header{
 	padding-bottom:9px;
-	margin:40px 0 20px;
+	margin:40px -75px 20px;
 	border-bottom:1px solid #eee
 }
 
@@ -1869,11 +1869,9 @@ pre code{
 	}
 
 	.col-sm-8{
-		width:66.66666667%
-	}
+		width:75.667%;
+		/*width:58.33333333%*/
 
-	.col-sm-7{
-		width:58.33333333%
 	}
 
 	.col-sm-6{
@@ -1888,7 +1886,9 @@ pre code{
 	}
 
 	.col-sm-4{
-		width:33.33333333%
+		width:24.333%;
+
+		/*width:33.33333333%*/
 	}
 
 	.col-sm-3{
@@ -4598,7 +4598,7 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 .navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>.active>a:focus{
 	color:#fff;
-	background-color:#0B6FC6
+	background-color:#7FC4E0
 }
 
 .navbar-inverse .navbar-nav>.disabled>a,.navbar-inverse .navbar-nav>.disabled>a:hover,.navbar-inverse .navbar-nav>.disabled>a:focus{
@@ -4681,8 +4681,9 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 	padding:8px 15px;
 	margin-bottom:20px;
 	list-style:none;
-	background-color:#f5f5f5;
-	border-radius:4px
+	background-color: #7FC4E0;
+  	border-radius: 4px;
+  	margin-top: -60px;
 }
 
 .breadcrumb>li{
@@ -5688,7 +5689,7 @@ a.list-group-item-danger.active,a.list-group-item-danger.active:hover,a.list-gro
 
 .panel-info>.panel-heading{
 	color:#31708f;
-	background-color:#d9edf7;
+	background-color:#A5B6BF;
 	border-color:#bce8f1
 }
 
@@ -6903,7 +6904,7 @@ button.close{
 }
 .breadcrumb{
 	padding: 8px 15px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	list-style: outside none none;
 	/*background-color: #F5F5F5;*/
 	border-radius: 4px;

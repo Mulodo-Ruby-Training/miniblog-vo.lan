@@ -5,8 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title,        limit: 200, null: false, unique: true
       t.string :description,  limit:255,  null: false, unique: true
       t.text :content,        null: false, unique: true
-      t.integer :user_id,     limit: 4,   null: false
-      t.boolean :status,      default: 0
+      t.integer :user_id,     limit: 4,   null: false 
 
       t.timestamps null: false
     end

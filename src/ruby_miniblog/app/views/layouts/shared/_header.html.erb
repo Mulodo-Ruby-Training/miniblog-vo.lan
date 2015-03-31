@@ -1,0 +1,77 @@
+  <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <div class="navbar-header col-md-3">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/homes"></a>
+        </div>
+      </div>
+      <div class=" navbar-header col-md-5" style="margin-top: 8px;">
+        <form role="form" action="/users">
+
+          <div class="input-group">
+            <input name="search" class="form-control txtSearch" placeholder="Username, firstname, lastname" type="text">
+            <span class="input-group-btn">
+              <input class="btn btn-info" value="Search" type="submit">
+            </span>
+
+          </div><!-- /input-group -->
+
+        </form>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">  <li class="active"><a href="#">MiniBlog</a>  </li>
+          <li class="dropdown">
+           <% if current_user %>
+           <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+             <i class="commenterAvatar">
+               <%= image_tag current_user.avatar.url(:thumb),:class =>'img-thumbnail'%>
+             </i>
+             Hi <%= current_user.display_name %>
+             <span class="caret"></span></a>
+             <ul id="g-account-menu" class="dropdown-menu" role="menu">
+              <li>
+              <span class ="left_readmore"><%=image_tag "post_all.png"%>
+              <%= link_to 'All post', posts_path%>
+              </span>
+              </li>
+              <li>
+              <span class ="left_readmore"><%=image_tag "post_add.png"%>
+              <%= link_to 'New post',new_post_path%>
+              </span>
+              </li>
+              <li>
+              <span class ="left_readmore"><%=image_tag "edit.png"%>
+              <%= link_to 'Edit Profile', edit_user_path(current_user.id)%>
+              </li>
+              </span>
+              <li>
+              <span class ="left_readmore"><%=image_tag "change_pass.png"%>
+              <%= link_to 'Change password',user_path(current_user.id)%>
+              </span>
+              </li>
+              <li>
+              <span class ="left_readmore"><%=image_tag "list_all_user.png"%>
+              <%= link_to 'All user',users_path%>
+              </span>
+              </li>
+            </ul>
+            <% else %>
+            <%= link_to "Sign up", sign_up_path %>
+            <% end %>  
+          </li>
+          <li>
+           <% if current_user %>
+           <%= link_to "Logout", log_out_path %>
+           <% else %>
+           <%= link_to "Log in", log_in_path %>
+           <% end %>
+         </li>
+       </ul>
+     </div>
+   </div>
+ </div>

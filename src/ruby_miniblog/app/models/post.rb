@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base 
   belongs_to :user
-  has_many :comment
+  has_many :comments
 
   validates :description, length: { maximum: 255 }
   validates :content, length: { minimum: 255 }

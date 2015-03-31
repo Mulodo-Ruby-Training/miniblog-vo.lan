@@ -91,3 +91,12 @@ footer {
   opacity: 0;
   filter: alpha(opacity=0);
 }
+.left_readmore{
+  padding-left:5px;
+}
+.top_image{
+  margin-top: -9px;
+}
+.top_error{
+  margin-bottom: 5px
+}

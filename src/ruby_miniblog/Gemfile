@@ -44,9 +44,6 @@ group :development, :test do
   gem 'spring'
 end
 
-# datetimepicker
-gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
-
 # gem ma hoa pass
 gem "bcrypt-ruby", :require => "bcrypt"
 
@@ -56,11 +53,11 @@ gem "paperclip", "~> 4.2"
 
 # edit content post by ckeditor
 gem 'ckeditor', :git => 'https://github.com/galetahub/ckeditor.git'
+gem 'simple_form'
 
 # pagination page
 gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
-#
-gem 'simple_form'
-#
+
+#create breadcrumb
 gem "breadcrumbs_on_rails"

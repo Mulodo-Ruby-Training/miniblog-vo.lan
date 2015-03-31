@@ -11,12 +11,14 @@ class UsersController < ApplicationController
   end
 
   def new
+    @title = "Signup"
     add_breadcrumb "Signup", :sign_up_path
     @user = User.new
 
   end
 
   def edit 
+    @title = "Edit | " << @user.username
     add_breadcrumb "Edit profile", :edit_user_path
 
   end
@@ -27,7 +29,6 @@ class UsersController < ApplicationController
   end
 
   def create
-#byebug
     @user = User.new(user_params)
     if @user.save
       redirect_to log_in_path, :notice => "Signed up!"

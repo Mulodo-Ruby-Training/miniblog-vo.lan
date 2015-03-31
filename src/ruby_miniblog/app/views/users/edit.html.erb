@@ -1,17 +1,17 @@
 <script type="text/javascript">
-$(function () {
-	$('#user_birthday').datetimepicker({
-        language:  'en',
-        weekStart: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		minView: 2,
-		forceParse: 0,
-		format:"dd-mm-yyyy",
-    });
-});
+	$(function () {
+		$('#user_birthday').datetimepicker({
+			language:  'en',
+			weekStart: 1,
+			todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			minView: 2,
+			forceParse: 0,
+			format:"dd-mm-yyyy",
+		});
+	});
 </script>
 <%= form_for @user do |f| %>
 <% if @user.errors.any? %>
@@ -72,7 +72,7 @@ $(function () {
 				<div class="form-group">
 					<label for="gender" class="col-md-3 control-label">Gender</label>
 					<div class="col-md-9 top_edit">
-						<%= f.select(:gender,options_for_select(genders, :selected => f.object.status),{},{:class => 'form-control'})%>							
+						<%= f.select(:gender,options_for_select(genders, :selected => f.object.gender),{},{:class => 'form-control'})%>							
 					</div>
 				</div>
 				<div class="form-group">
